@@ -1,16 +1,37 @@
 module Pascal
 
-context-free start-symbols Program
+context-free start-symbols Program Unit
 
 context-free syntax // Programs and Blocks
   
   Program.Program = <
-    <Programheading> 
+    <Programheading?>
+    <Uses>
     <Block>.
+  > {case-insensitive}
+  
+  Unit.Unit = <
+    unit <Identifier>;
+    
+    interface
+    
+    <Uses?>
+    <CommonDeclarations?>
+    
+    implementation
+    
+    <Uses?>
+    <Block>.
+  >
+  
+  Uses.Uses = < 
+    uses 
+      {Identifier ", "}+; 
+      
   >
 
   Programheading.ProgramHeading = <
-    program <Identifier> (<{Identifier ", "}*>);
+    program <Identifier> {(<{Identifier ", "}*>)}?;
   > {case-insensitive}
 
   Block.Block = <
@@ -214,7 +235,6 @@ context-free syntax // Expressions
   Expression        = <(<Expression>)> {bracket}  
   Expression        = Variable
   Expression        = Number
-  Expression		= Boolean
   Expression.String = String
   Expression.Char   = Char
   Expression		= Boolean
@@ -331,7 +351,6 @@ context-free syntax // Record Fields
   	<Term?>
   >
    
-
   RecordSection.RecordSection =
     <<{FieldIdentifier ", "}+> : <Type>>
 
@@ -362,11 +381,11 @@ context-free syntax // Input/Output
 
 lexical syntax // Variable and Identifier Categories
 
-  Identifier = [a-zA-Z][a-zA-Z0-9]*
+  Identifier = [a-zA-Z_][a-zA-Z0-9_]*
   
 lexical restrictions
 
-  Identifier -/- [a-zA-Z0-9]
+  Identifier -/- [a-zA-Z0-9_]
 
 context-free syntax
 
@@ -387,6 +406,46 @@ context-free syntax
   Identifier = <false>     {reject,case-insensitive}
   Identifier = <not>       {reject,case-insensitive}
   Identifier = <with>      {reject,case-insensitive}
+
+  Identifier = <and>      {reject,case-insensitive}
+  Identifier = <array>    {reject,case-insensitive}
+  Identifier = <div>      {reject,case-insensitive}
+  Identifier = <do>       {reject,case-insensitive}
+  Identifier = <downto>   {reject,case-insensitive}
+  Identifier = <file>     {reject,case-insensitive}
+  Identifier = <for>      {reject,case-insensitive}
+  Identifier = <goto>     {reject,case-insensitive}
+  Identifier = <label>    {reject,case-insensitive}
+  Identifier = <mod>      {reject,case-insensitive}
+  Identifier = <nil>      {reject,case-insensitive}
+  Identifier = <or>       {reject,case-insensitive}
+  Identifier = <packed>   {reject,case-insensitive}
+  Identifier = <record>   {reject,case-insensitive}
+  Identifier = <repeat>   {reject,case-insensitive}
+  Identifier = <set>      {reject,case-insensitive}
+  Identifier = <to>       {reject,case-insensitive}
+  Identifier = <until>    {reject,case-insensitive}
+  Identifier = <while>    {reject,case-insensitive}
+
+// FPC
+  Identifier = <uses>           {reject,case-insensitive}
+  Identifier = <class>          {reject,case-insensitive}
+  Identifier = <interface>      {reject,case-insensitive}
+  Identifier = <asm>            {reject,case-insensitive}
+  Identifier = <constructor>    {reject,case-insensitive}
+  Identifier = <destructor>     {reject,case-insensitive}
+  Identifier = <implementation> {reject,case-insensitive}
+  Identifier = <inline>         {reject,case-insensitive}
+  Identifier = <object>         {reject,case-insensitive}
+  Identifier = <operator>       {reject,case-insensitive}
+  Identifier = <reintroduce>    {reject,case-insensitive}
+  Identifier = <self>           {reject,case-insensitive}
+  Identifier = <shl>            {reject,case-insensitive}
+  Identifier = <shr>            {reject,case-insensitive}
+  Identifier = <shl>            {reject,case-insensitive}
+  Identifier = <string>         {reject,case-insensitive}
+  Identifier = <unit>           {reject,case-insensitive}
+  Identifier = <xor>            {reject,case-insensitive}
   
 context-free syntax
   
@@ -428,15 +487,17 @@ lexical restrictions
   
 lexical syntax // Strings
 
-  String = "'" StringCharacter StringCharacter+  "'"
-  Char = "'" StringCharacter  "'"
+  String = "'" StringCharacter* "'"
+  String = {"#" Unsigneddigitsequence}+ // FPC
+  Char = "'" StringCharacter "'"
+  Char = "#" Unsigneddigitsequence // FPC
+  Char = "^" [a-zA-Z] // FPC
   StringCharacter = ~[\'] 
   StringCharacter = "''"
 
 lexical syntax // layout
   
   LAYOUT           = [\ \t\n\r] // whitespace
-  
   LAYOUT           = Comment
   
   Comment          = "{" InsideComment* "}" 
@@ -444,6 +505,7 @@ lexical syntax // layout
   InsideComment    = Comment // nested comment, not in standard
   
   Comment          = "(*" InsideParComment* "*)" 
+  Comment          = "//" ~[\n\r]* // single line comment FPC
   InsideParComment = ~[\*]
   InsideParComment = Asterisk
   Asterisk         = "*"
