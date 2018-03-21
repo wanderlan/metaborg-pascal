@@ -1,4 +1,4 @@
 ---
 dependencies:
   compile:
-  - org.metaborg:org.metaborg.lang.pascal:0.1.0-SNAPSHOT
+  - org.metaborg:org.metaborg.lang.pascal:spoofax-language:1.0.0-SNAPSHOT

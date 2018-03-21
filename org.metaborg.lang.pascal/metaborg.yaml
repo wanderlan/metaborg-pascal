@@ -1,5 +1,5 @@
 ---
-id: org.metaborg:org.metaborg.lang.pascal:0.1.0-SNAPSHOT
+id: org.metaborg:org.metaborg.lang.pascal:1.0.0-SNAPSHOT
 name: Pascal
 placeholder:
   prefix: "$"
