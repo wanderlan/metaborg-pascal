@@ -1,0 +1,57 @@
+module Free_Pascal
+
+imports ISO_Pascal
+
+context-free start-symbols Program Unit
+
+context-free syntax   
+  Program.Program = <
+    <Programheading?>
+    <Uses>
+    <Block>.
+  > {case-insensitive}
+  
+  Unit.Unit = <
+    unit <Identifier>;
+    
+    interface
+    
+    <Uses?>
+    <CommonDeclarations?>
+    
+    implementation
+    
+    <Uses?>
+    <Block>.
+  > 
+  Uses.Uses = < 
+    uses 
+      {Identifier ", "}+; 
+      
+  >
+  Identifier = 'uses'           {reject}
+  Identifier = 'class'          {reject}
+  Identifier = 'interface'      {reject}
+  Identifier = 'asm'            {reject}
+  Identifier = 'constructor'    {reject}
+  Identifier = 'destructor'     {reject}
+  Identifier = 'implementation' {reject}
+  Identifier = 'inline'         {reject}
+  Identifier = 'object'         {reject}
+  Identifier = 'operator'       {reject}
+  Identifier = 'reintroduce'    {reject}
+  Identifier = 'self'           {reject}
+  Identifier = 'shl'            {reject}
+  Identifier = 'shr'            {reject}
+  Identifier = 'shl'            {reject}
+  Identifier = 'string'         {reject}
+  Identifier = 'unit'           {reject}
+  Identifier = 'xor'            {reject}
+  
+lexical syntax // Strings
+  String = {"#" Unsigneddigitsequence}+ 
+  Char = "#" Unsigneddigitsequence 
+  Char = "^" [a-zA-Z] 
+
+lexical syntax // layout  
+  Comment = "//" ~[\n\r]* // single line comment FPC
