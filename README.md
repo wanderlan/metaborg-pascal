@@ -19,3 +19,5 @@
 4. Invoke [Byte Buddy](http://bytebuddy.net/#/tutorial) for JVM backend from gpp or pp
 
 5. Invoke [KLLVM](https://github.com/ftomassetti/kllvm) or [java-llvm-ir-builder](https://github.com/pointhi/java-llvm-ir-builder) for LLVM backend from gpp or pp 
+
+* [Graal](http://www.oracle.com/technetwork/oracle-labs/program-languages/overview/index.html)
