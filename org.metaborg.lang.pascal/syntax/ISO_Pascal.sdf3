@@ -360,11 +360,11 @@ context-free syntax // Input/Output
 
 lexical syntax // Variable and Identifier Categories
 
-  Identifier = [a-zA-Z_][a-zA-Z0-9_]*
+  Identifier = [a-zA-Z\_] [a-zA-Z0-9\_]*
   
 lexical restrictions
 
-  Identifier -/- [a-zA-Z0-9_]
+  Identifier -/- [a-zA-Z0-9\_]
 
 context-free syntax
 

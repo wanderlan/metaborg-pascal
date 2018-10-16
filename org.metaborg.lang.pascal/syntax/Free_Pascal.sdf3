@@ -49,7 +49,7 @@ context-free syntax
   Identifier = 'xor'            {reject}
   
 lexical syntax // Strings
-  String = {"#" Unsigneddigitsequence}+ 
+  String = Char+ 
   Char = "#" Unsigneddigitsequence 
   Char = "^" [a-zA-Z] 
 
