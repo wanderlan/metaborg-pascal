@@ -6,7 +6,7 @@
 2. Assimilate (Borg :)) others Pascal dialects: 
    1. [ISO Pascal](http://www.pascal-central.com/iso7185.html): Only syntax and semantics not conflicting with Free Pascal
    2. [Free Pascal](https://www.freepascal.org/docs-html/current/ref/ref.html): Delphi mode 
-   3. [Delphi](http://docwiki.embarcadero.com/RADStudio/Rio/en/Delphi_Language_Guide_Index)
+   3. [Delphi](http://docwiki.embarcadero.com/RADStudio/Rio/en/Delphi_Language_Guide_Index): [Antlr4 grammar](https://github.com/gotthardsen/Delphi-ANTRL4-Grammar/blob/master/Delphi.g4)
    4. [Oxygene](https://docs.elementscompiler.com/Oxygene/Delphi/): Delphi compatibility settings enabled
    5. [Smart Pascal](http://samples.leanpub.com/asmartbook-sample.pdf)
    6. [Vector Pascal](https://ufpr.dl.sourceforge.net/project/vectorpascalcom/manual.pdf)
