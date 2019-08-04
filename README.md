@@ -2,7 +2,7 @@
 
 ## Objectives:
 
-1. Define and implement Pascal using (almost) only metalanguages in Spoofax workbench
+1. Define and implement Pascal using (almost) only metalanguages ([SDF3](https://www.metaborg.org/en/latest/source/langdev/meta/lang/sdf3/index.html) and [DynSem](https://www.metaborg.org/en/latest/source/langdev/meta/lang/dynsem/index.html)) in Spoofax workbench
 2. Assimilate (Borg :)) others Pascal dialects: 
    1. [ISO Pascal](http://www.pascal-central.com/iso7185.html): Only syntax and semantics not conflicting with Free Pascal
    2. [Free Pascal](https://www.freepascal.org/docs-html/current/ref/ref.html): Delphi mode 
