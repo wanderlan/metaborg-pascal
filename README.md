@@ -3,9 +3,11 @@
 ## Objectives:
 
 1. Define and implement Pascal using (almost) only declarative metalanguages in [MetaBorg Spoofax](https://www.metaborg.org/) workbench:
-   1. [SDF3](https://www.metaborg.org/en/latest/source/langdev/meta/lang/sdf3/index.html) for Lexer and Parser
-   2. [DynSem](https://www.metaborg.org/en/latest/source/langdev/meta/lang/dynsem/index.html) for [Graal](http://www.oracle.com/technetwork/oracle-labs/program-languages/overview/index.html) Interpreter
-   3. [Truffle](https://github.com/oracle/graal/tree/master/truffle) for automatic [Graal](https://www.graalvm.org/) Code Generator 
+   1. [SDF3](https://www.metaborg.org/en/latest/source/langdev/meta/lang/sdf3/index.html) to generate Lexer and Parser
+   2. [DynSem](https://www.metaborg.org/en/latest/source/langdev/meta/lang/dynsem/index.html) to generate [Graal](http://www.oracle.com/technetwork/oracle-labs/program-languages/overview/index.html) Interpreter
+   3. [ESV](https://www.metaborg.org/en/latest/source/langdev/meta/lang/esv.html) to generate full-featured Eclipse and IntelliJ Editor plugins
+   4. [SPT] to generate test cases
+   5. [Truffle](https://github.com/oracle/graal/tree/master/truffle) to generate automatic [Graal](https://www.graalvm.org/) Code Generator, Debugger and Profiler services 
    
 2. Assimilate (Borg :)) others Pascal dialects: 
    1. [ISO Pascal](http://www.pascal-central.com/iso7185.html): Only syntax and semantics not conflicting with Free Pascal
